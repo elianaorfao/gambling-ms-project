@@ -3,13 +3,12 @@ package com.gambling.user_service.service;
 import com.gambling.user_service.dto.UserDTO;
 import com.gambling.user_service.exceptions.UserNotFoundException;
 import com.gambling.user_service.mapper.UserMapper;
-import com.gambling.user_service.model.PatchUserRequest;
+import com.gambling.user_service.dto.PatchUserRequest;
 import com.gambling.user_service.model.User;
 import com.gambling.user_service.repository.UserRepository;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 

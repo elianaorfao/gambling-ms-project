@@ -1,14 +1,12 @@
 package com.gambling.user_service.controller;
 
 import com.gambling.user_service.dto.UserDTO;
-import com.gambling.user_service.exceptions.UserNotFoundException;
-import com.gambling.user_service.model.PatchUserRequest;
+import com.gambling.user_service.dto.PatchUserRequest;
 import com.gambling.user_service.service.UserService;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;

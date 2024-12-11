@@ -1,4 +1,4 @@
-package com.gambling.user_service.model;
+package com.gambling.user_service.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

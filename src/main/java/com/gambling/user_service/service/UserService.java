@@ -1,7 +1,7 @@
 package com.gambling.user_service.service;
 
 import com.gambling.user_service.dto.UserDTO;
-import com.gambling.user_service.model.PatchUserRequest;
+import com.gambling.user_service.dto.PatchUserRequest;
 import java.math.BigDecimal;
 import java.util.List;
 
