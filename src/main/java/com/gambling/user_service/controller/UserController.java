@@ -56,13 +56,15 @@ public class UserController {
   }
 
   @PatchMapping("/{id}/balance/increase")
-  public void increaseBalance(@PathVariable("id") String userId, @RequestBody String amount){
-    service.increaseBalance(Long.valueOf(userId), new BigDecimal(amount));
+  @ResponseStatus(HttpStatus.OK)
+  public void increaseBalance(@PathVariable("id") String userId, @RequestBody BigDecimal amount){
+    service.increaseBalance(Long.valueOf(userId), amount);
   }
 
   @PatchMapping("/{id}/balance/decrease")
-  public void decreaseBalance(@PathVariable("id") String userId,@RequestBody String amount){
-    service.decreaseBalance(Long.valueOf(userId), new BigDecimal(amount));
+  @ResponseStatus(HttpStatus.OK)
+  public void decreaseBalance(@PathVariable("id") String userId,@RequestBody BigDecimal amount){
+    service.decreaseBalance(Long.valueOf(userId), amount);
   }
 
 }
