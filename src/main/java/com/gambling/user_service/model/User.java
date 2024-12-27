@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,6 +48,10 @@ public class User {
 
   @Column(name = "BALANCE", length = 30)
   private BigDecimal balance;
+
+  @Column(name = "STATUS", length = 30)
+  @Enumerated(EnumType.STRING)
+  private UserStatus status;
 
   @Column(name = "BIRTHDAY",  nullable = false)
   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

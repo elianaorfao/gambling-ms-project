@@ -11,7 +11,9 @@ public interface UserService {
   public UserDTO getUser(Long userId);
   public void create(UserDTO userDTO);
   public void update(Long userId, PatchUserRequest request);
-  public BigDecimal getUserBalance(String userId);
+  public BigDecimal getUserBalance(Long userId);
   public void increaseBalance(Long userId, BigDecimal amount);
   public void decreaseBalance(Long userId, BigDecimal amount);
+  public void setUserInactive(Long userId);
+  public void setUserActive(Long userId);
 }

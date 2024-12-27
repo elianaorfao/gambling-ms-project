@@ -5,6 +5,7 @@ import com.gambling.user_service.exceptions.UserNotFoundException;
 import com.gambling.user_service.mapper.UserMapper;
 import com.gambling.user_service.dto.PatchUserRequest;
 import com.gambling.user_service.model.User;
+import com.gambling.user_service.model.UserStatus;
 import com.gambling.user_service.repository.UserRepository;
 import java.math.BigDecimal;
 import java.util.List;
@@ -50,7 +51,6 @@ public class UserServiceImpl implements UserService {
     validateForPatch(request);
     updateUser(user, request);
     repository.save(user);
-
   }
 
   private void validateForPatch(PatchUserRequest request){
@@ -76,16 +76,16 @@ public class UserServiceImpl implements UserService {
       user.setLastName(request.getLastName());
     }
     if(request.getEmail() != null) {
-      user.setLastName(request.getEmail());
+      user.setEmail(request.getEmail());
     }
     if(request.getIban() != null) {
-      user.setLastName(request.getIban());
+      user.setIban(request.getIban());
     }
   }
 
-  public BigDecimal getUserBalance(String userId){
+  public BigDecimal getUserBalance(Long userId){
     return Optional.ofNullable(userId)
-        .map(u -> Long.valueOf(userId))
+        .map(u -> userId)
         .map(repository::findByUserId)
         .map(User::getBalance)
         .orElseThrow(()-> new UserNotFoundException("User not found with id: " + userId));
@@ -108,6 +108,24 @@ public class UserServiceImpl implements UserService {
       throw new IllegalArgumentException("Insufficient balance!");
     }
     user.setBalance(newBalance);
+    repository.save(user);
+  }
+
+  public void setUserInactive(Long userId){
+    User user = Optional.ofNullable(userId)
+        .map(u -> userId)
+        .map(repository::findByUserId)
+        .orElseThrow();
+    user.setStatus(UserStatus.INACTIVE);
+    repository.save(user);
+  }
+
+  public void setUserActive(Long userId){
+    User user = Optional.ofNullable(userId)
+        .map(u -> userId)
+        .map(repository::findByUserId)
+        .orElseThrow();
+    user.setStatus(UserStatus.ACTIVE);
     repository.save(user);
   }
 
